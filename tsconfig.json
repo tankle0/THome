@@ -10,8 +10,8 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "types": ["element-plus/global"],
     "baseUrl": ".",
+    "types": ["vite/client","element-plus/global"],
     "paths": {
       "@/*":[
         "src/*"

@@ -10,7 +10,7 @@ export default{
 
 <template>
   <div class="dashboard">
-    <h1>首页</h1>
+    <h1>tank-首页</h1>
   </div>
 </template>
 

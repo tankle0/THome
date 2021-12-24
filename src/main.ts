@@ -10,15 +10,17 @@ import router from './router'
 // })
 
 import {
-  Edit,
-  CameraFilled
+  Sunny,
+  Avatar,
+  ArrowDown
 }
 from '@element-plus/icons-vue'
 
 const app = createApp(App)
 
-app.component('edit',Edit)
-app.component('camera-filled',CameraFilled)
+app.component('sunny',Sunny)
+app.component('avatar',Avatar)
+app.component('arrow-down',ArrowDown)
 
 app.use(router)
 .mount('#app')

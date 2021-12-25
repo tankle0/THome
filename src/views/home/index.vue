@@ -52,8 +52,9 @@ export default{
     }
   
     .el-aside {
-      width: 220px;
+      width: 180px;
       background-color: #e6e6e6;
+      overflow-x: hidden;
     }
   
     .el-main {

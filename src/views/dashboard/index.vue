@@ -11,7 +11,6 @@ export default{
 <template>
   <div class="dashboard">
     <h1>tank-首页</h1>
-    <el-button type="primary" size="small">退出登录</el-button>
   </div>
 </template>
 

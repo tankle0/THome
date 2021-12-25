@@ -5,74 +5,112 @@ export default{
 </script>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-const isCollapse = ref<Boolean>(false)
+import { computed, reactive, ref } from 'vue';
+import { useRoute } from 'vue-router';
+import MenuNav from './MenuNav.vue'
+const isCollapse = ref(false)
+, route = useRoute()
+, menuObj = reactive({
+  menuData:[
+    {
+      path:'/dashboard',
+      meta:{
+        title:'首页',
+        icon:'HomeFilled'
+      },
+      children:[]
+    },
+    {
+      path:'/system',
+      meta:{
+        title:'系统设置',
+        icon:'Setting'
+      },
+      children:[
+        {
+          path:'/user',
+          meta:{
+            title:'用户设置',
+            icon:'Male'
+          },
+          children:[]
+        },
+        {
+          path:'/role',
+          meta:{
+            title:'角色设置',
+            icon:'List'
+          },
+          children:[]
+        },
+        {
+          path:'/menu',
+          meta:{
+            title:'菜单设置',
+            icon:'Menu'
+          },
+          children:[]
+        },
+      ]
+    },
+    {
+      path:'/home',
+      meta:{
+        title:'个人中心',
+        icon:'Avatar'
+      },
+      children:[]
+    },
+    {
+      path:'/base',
+      meta:{
+        title:'基础配置',
+        icon:'Grid'
+      },
+      children:[
+        {
+          path:'/avatar',
+          meta:{
+            title:'头像设置',
+            icon:'Operation'
+          },
+          children:[
+            {
+              path:'/avatar',
+              meta:{
+                title:'小头像设置',
+                icon:'PictureFilled'
+              },
+            }
+          ]
+        },
+        {
+          path:'/msg',
+          meta:{
+            title:'个人信息',
+            icon:'Headset'
+          },
+          children:[]
+        }
+      ]
+    },
+  ]
+})
+,activeMenu = computed(()=>{
+  return route.path
+})
 
-
-/* 
-  页面用到的方法
-*/
-
-function handleOpen(){
-
-}
-
-
-function handleClose(){
-
-}
 </script>
 
 <template>
   <div class="slideBar">
     <el-menu
-      default-active="2"
+      :default-active="activeMenu"
       class="el-menu-vertical-demo"
       :collapse="isCollapse"
-      @open="handleOpen"
-      @close="handleClose"
+      :unique-opened="true"
     >
-      <el-sub-menu index="1">
-        <template #title>
-          <!-- <el-icon><location /></el-icon> -->
-          <span>Navigator One</span>
-        </template>
-        <!-- <el-menu-item-group>
-          <template #title><span>Group One</span></template> -->
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item two</el-menu-item>
-        <!-- </el-menu-item-group> -->
-        <!-- <el-menu-item-group title="Group Two"> -->
-          <el-menu-item index="1-3">item three</el-menu-item>
-        <!-- </el-menu-item-group> -->
-        <el-sub-menu index="1-4">
-          <template #title><span>item four</span></template>
-          <el-menu-item index="1-4-1">item one</el-menu-item>
-          <el-menu-item index="1-4-2">item one</el-menu-item>
-          <el-menu-item index="1-4-3">item one</el-menu-item>
-          <el-menu-item index="1-4-4">item one</el-menu-item>
-          <el-menu-item index="1-4-5">item one</el-menu-item>
-          <el-menu-item index="1-4-6">item one</el-menu-item>
-          <el-menu-item index="1-4-7">item one</el-menu-item>
-          <el-menu-item index="1-4-8">item one</el-menu-item>
-        </el-sub-menu>
-      </el-sub-menu>
-      <el-menu-item index="2">
-        <!-- <el-icon><icon-menu /></el-icon> -->
-        <template #title>Navigator Two</template>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <!-- <el-icon><document /></el-icon> -->
-        <template #title>Navigator Three</template>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <!-- <el-icon><setting /></el-icon> -->
-        <template #title>Navigator Four</template>
-      </el-menu-item>
+      <MenuNav v-for="(item) in menuObj.menuData" :menu='item' :index="item.path" :key="item.path"></MenuNav>
     </el-menu>
   </div>
 </template>
-
-<style scoped lang="scss">
-
-</style>

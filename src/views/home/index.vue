@@ -24,7 +24,13 @@ export default{
         </el-scrollbar>
         <el-main>
           <el-scrollbar>
-            <router-view></router-view>
+            <router-view v-slot="{Component}">
+              <transition name="slide-fade">
+                <keep-alive :include="['dashboard']">
+                  <component :is="Component" />
+                </keep-alive>
+              </transition>
+            </router-view>
           </el-scrollbar>
         </el-main>
       </el-container>
@@ -42,12 +48,6 @@ export default{
       background-color: #fbfbfb;
     }
     .el-header{
-      // background-image: linear-gradient(to right, #a8caba 0%, #5d4157 100%);
-      // background-image: linear-gradient(to right, #ebc0fd 0%, #d9ded8 100%);
-      // background: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 100%);
-      // background-image: linear-gradient(to right, #a8edea 0%, #fed6e3 100%);
-      // background-image: linear-gradient(to right, #ebbba7 0%, #cfc7f8 100%);
-      // background-image: linear-gradient(to right, #e4afcb 0%, #b8cbb8 0%, #b8cbb8 0%, #e2c58b 30%, #c2ce9c 64%, #7edbdc 100%);
       background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%);
     }
   
@@ -65,6 +65,20 @@ export default{
     .el-container {
       height: calc(100% - 60px);
     }
+  }
+ .slide-fade-enter-active {
+    transition: all 0.2s ease-out;
+    opacity: 0.1;
+  }
+
+  .slide-fade-leave-active {
+    transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+  }
+
+  .slide-fade-enter-from,
+  .slide-fade-leave-to {
+    transform: translateX(50px) scale(.5);
+    opacity: 0;
   }
 }
 </style>

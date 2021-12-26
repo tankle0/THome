@@ -12,6 +12,17 @@ const asyncRoutes:Array<RouteRecordRaw> = [
         component: () => import("@/views/dashboard/index.vue")
       }
     ]
+  },
+  {
+    path:'/books',
+    name: 'books',
+    component:Home,
+    children:[
+      {
+        path:'',
+        component: () => import("@/views/books/index.vue")
+      }
+    ]
   }
 ]
 

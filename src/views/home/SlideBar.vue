@@ -1,15 +1,17 @@
 <script lang="ts">
+import { computed, reactive, ref } from 'vue';
+import { useRoute } from 'vue-router';
+import MenuNav from './MenuNav.vue'
 export default{
   name:'slidebar'
 }
 </script>
 
 <script lang="ts" setup>
-import { computed, reactive, ref } from 'vue';
-import { useRoute } from 'vue-router';
-import MenuNav from './MenuNav.vue'
 const isCollapse = ref(false)
 , route = useRoute()
+
+//模拟后端返回路由格式
 , menuObj = reactive({
   menuData:[
     {
@@ -54,10 +56,10 @@ const isCollapse = ref(false)
       ]
     },
     {
-      path:'/home',
+      path:'/books',
       meta:{
-        title:'个人中心',
-        icon:'Avatar'
+        title:'前端资料',
+        icon:'FolderAdd'
       },
       children:[]
     },

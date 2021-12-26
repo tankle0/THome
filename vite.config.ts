@@ -31,7 +31,7 @@ export default defineConfig({
   },
   resolve:{
     alias:{
-      '@': path.resolve(__dirname,'src')
+      '@': path.resolve(__dirname,'src')  //若是找不到__dirname  使用命令  npm install --save-dev @types/node
     }
   },
   build:{

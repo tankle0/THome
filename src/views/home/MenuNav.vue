@@ -1,20 +1,15 @@
 <script lang="ts">
+import { MenuType } from '@/types/menu'
 export default{
   name:'MenuItem'
 }
 </script>
 
 <script lang="ts" setup>
-const props = defineProps({
-  menu:{
-    type:Object,
-    required: true
-  },
-  index:{
-    type: String,
-    required:true
-  }
-})
+const props = defineProps<{
+  menu:MenuType,
+  index:string
+}>()
 
 </script>
 

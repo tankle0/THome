@@ -3,12 +3,13 @@ import Home from '@/views/home/index.vue'
 
 const asyncRoutes:Array<RouteRecordRaw> = [
   {
-    path:'/dashboard',
+    path:'/',
     name: 'dashboard',
+    redirect:'/dashboard',
     component:Home,
     children:[
       {
-        path:'',
+        path:'dashboard',
         component: () => import("@/views/dashboard/index.vue")
       }
     ]

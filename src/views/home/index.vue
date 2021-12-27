@@ -1,13 +1,12 @@
 <script lang="ts">
-import Header from '@/views/home/Header.vue'
-import SlideBar from '@/views/home/SlideBar.vue'
 export default{
   name:'home'
 }
 </script>
 
 <script lang="ts" setup>
-// console.log(import.meta.env);
+import Header from '@/views/home/Header.vue'
+import SlideBar from '@/views/home/SlideBar.vue'
 </script>
 
 <template>

@@ -17,7 +17,7 @@ const router:Router = useRouter()
         sub-title=""
       >
         <template #extra>
-          <el-button type="primary" size="medium" @click="router.push('/dashboard')">返回首页</el-button>
+          <el-button type="primary" size="medium" @click="router.push('/')">返回首页</el-button>
         </template>
     </el-result>
   </div>

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { reactive, ref } from 'vue'
+import { reactive, ref, getCurrentInstance } from 'vue'
 export default{
   name:'login'
 }
@@ -30,32 +30,38 @@ const formObj = reactive(
     ]
   }
 )
-, form = ref(null)
 
-
+, {ctx}:any = getCurrentInstance()
 
 /* 
   页面用到的方法
 */
 
-
 function doLogin(name:String,password:String):void{
-  let params = {
-    name,
-    password
-  }
+  ctx.$refs.form.validate((valid:Boolean) => {
+    if (valid) {
+      let params = {
+        name,
+        password
+      }
+      // localStorage.setItem("name":name)
+    } else {
+      return false
+    }
+  })
 }
 </script>
 
 <template>
   <div class="login">
     <div class="loginBox">
+      <h1>vue3 + vite + typesctipt <br /> 后台管理系统模板</h1>
       <el-form ref="form" :model="formObj" :rules="rules" label-width="120px">
         <el-form-item label="用户名:" prop="name">
-          <el-input class="ipt" v-model="formObj.name"></el-input>
+          <el-input class="ipt" v-model="formObj.name" placeholder="请输入用户名"></el-input>
         </el-form-item>
         <el-form-item label="密码:" prop="password">
-          <el-input class="ipt" v-model="formObj.password"></el-input>
+          <el-input class="ipt" v-model="formObj.password" placeholder="请输入密码"></el-input>
         </el-form-item>
         <el-form-item label="" >
           <el-button @click="doLogin(formObj.name,formObj.password)" class="loginBtn" type="primary" round>登 录</el-button>
@@ -87,6 +93,11 @@ function doLogin(name:String,password:String):void{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    h1{
+      width: 100%;
+      text-align: center;
+      font-size: 20px;
+    }
     .ipt{
       width: 200px;
     }

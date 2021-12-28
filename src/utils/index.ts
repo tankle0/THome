@@ -1,5 +1,11 @@
-type funType = (timestamp:String|Date|Number,sign:String) => String
+/* 
+  两种类型声明都可以
+*/
+// type funType = (timestamp:String|Date|Number,sign:String) => String
 
+interface funType{
+  (timestamp:String|Date|Number,sign:String) : string
+}
 
 //获取指定日期的完整时间(默认格式  年-月-日 时:分:秒)
 const get_y_m_d_h_m_s:funType = function(timestamp,sign){

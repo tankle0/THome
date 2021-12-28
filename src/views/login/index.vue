@@ -1,5 +1,7 @@
 <script lang="ts">
 import { reactive, ref, getCurrentInstance } from 'vue'
+import { setUserInfo } from '@/utils/user'
+import router from '@/router'
 export default{
   name:'login'
 }
@@ -37,14 +39,15 @@ const formObj = reactive(
   页面用到的方法
 */
 
-function doLogin(name:String,password:String):void{
+function doLogin(name:string,password:string):void{
   ctx.$refs.form.validate((valid:Boolean) => {
     if (valid) {
       let params = {
         name,
         password
-      }
-      // localStorage.setItem("name":name)
+      },token = Math.random() + ''
+      setUserInfo(name,token)
+      router.push('/')
     } else {
       return false
     }
@@ -55,7 +58,7 @@ function doLogin(name:String,password:String):void{
 <template>
   <div class="login">
     <div class="loginBox">
-      <h1>vue3 + vite + typesctipt <br /> 后台管理系统模板</h1>
+      <h1>Vue3 + Vite + TypeSctipt <br /> 后台管理系统模板</h1>
       <el-form ref="form" :model="formObj" :rules="rules" label-width="120px">
         <el-form-item label="用户名:" prop="name">
           <el-input class="ipt" v-model="formObj.name" placeholder="请输入用户名"></el-input>

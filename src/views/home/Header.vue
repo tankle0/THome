@@ -39,6 +39,7 @@ const router = useRouter()
     <div class="user">
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
+          <span>{{'tank'}}</span>
           <el-icon color="#666"><avatar /></el-icon>
           <el-icon color="#666" class="el-icon--right">
             <arrow-down />
@@ -87,6 +88,15 @@ const router = useRouter()
     }
     .el-icon--right{
       font-size: 20px;
+    }
+    .el-dropdown-link{
+      display: flex;
+      align-items: center;
+      span{
+        margin-right: 5px;
+        font-weight: bold;
+        color: black;
+      }
     }
   }
 }

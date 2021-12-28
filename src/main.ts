@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import './utils/permission'
 import 'element-plus/dist/index.css'
+import { store } from './vuex'
 
 const app = createApp(App)
 
@@ -25,4 +26,5 @@ Object.keys(icons).forEach(key => {
 // app.component('arrow-down',ArrowDown)
 
 app.use(router)
+.use(store)
 .mount('#app')

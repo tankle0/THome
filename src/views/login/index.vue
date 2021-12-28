@@ -3,13 +3,13 @@ import { reactive, ref, getCurrentInstance } from 'vue'
 import { setUserInfo } from '@/utils/user'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
+import { useStore } from 'vuex'
 export default{
   name:'login'
 }
 </script>
 
 <script lang="ts" setup>
-
 const formObj = reactive(
   {
     name:'',
@@ -17,6 +17,7 @@ const formObj = reactive(
   }
 )
 , router = useRouter()
+, store = useStore()
 , rules = reactive(
   {
     name:[
@@ -38,6 +39,8 @@ const formObj = reactive(
 
 , {ctx}:any = getCurrentInstance()
 
+
+console.log(store.getters['app/name'],store.state.app.user);
 /* 
   页面用到的方法
 */

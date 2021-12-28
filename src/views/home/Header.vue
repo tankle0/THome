@@ -1,10 +1,33 @@
 <script lang="ts">
+import { removeUserInfo } from '@/utils/user'
+import { useRouter } from 'vue-router'
+import { ElMessageBox, ElMessage } from 'element-plus'
 export default{
   name:"heads"
 }
 </script>
 
 <script lang="ts" setup>
+const router = useRouter()
+, loginOut = ()=>{
+  ElMessageBox.confirm(
+    '确认退出登录?',
+    {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning',
+    }
+  )
+  .then(() => {
+    removeUserInfo()
+    router.push('/login')
+    ElMessage({
+      type: 'success',
+      message: '退出登录成功',
+    })
+  })
+  .catch(() => {})
+}
 
 </script>
 
@@ -25,7 +48,7 @@ export default{
           <el-dropdown-menu>
             <el-dropdown-item >首页</el-dropdown-item>
             <el-dropdown-item divided>个人中心</el-dropdown-item>
-            <el-dropdown-item divided>退出登录</el-dropdown-item>
+            <el-dropdown-item @click="loginOut" divided>退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>

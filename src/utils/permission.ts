@@ -1,8 +1,8 @@
 import router from "@/router";
 import { getUserInfo, removeUserInfo } from "@/utils/user"
 
-const userInfo = getUserInfo()
 router.beforeEach((to,from,next) =>{
+  const userInfo = getUserInfo()
   if(userInfo && userInfo.token){
     if(to.path === '/login'){
       next('/')
@@ -10,6 +10,7 @@ router.beforeEach((to,from,next) =>{
       next()
     }
   }else{
+    console.log('notoken',to.path);
     removeUserInfo()
     if(to.path === '/login'){
       next()

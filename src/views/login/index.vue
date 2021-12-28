@@ -1,19 +1,22 @@
 <script lang="ts">
 import { reactive, ref, getCurrentInstance } from 'vue'
 import { setUserInfo } from '@/utils/user'
-import router from '@/router'
+import { useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
 export default{
   name:'login'
 }
 </script>
 
 <script lang="ts" setup>
+
 const formObj = reactive(
   {
     name:'',
     password:''
   }
 )
+, router = useRouter()
 , rules = reactive(
   {
     name:[
@@ -46,8 +49,14 @@ function doLogin(name:string,password:string):void{
         name,
         password
       },token = Math.random() + ''
-      setUserInfo(name,token)
-      router.push('/')
+      setUserInfo({name,token})
+      ElMessage({
+        message:'登录成功',
+        type:'success'
+      })
+      setTimeout(()=>{
+        router.push('/')
+      },300)
     } else {
       return false
     }
@@ -61,10 +70,10 @@ function doLogin(name:string,password:string):void{
       <h1>Vue3 + Vite + TypeSctipt <br /> 后台管理系统模板</h1>
       <el-form ref="form" :model="formObj" :rules="rules" label-width="120px">
         <el-form-item label="用户名:" prop="name">
-          <el-input class="ipt" v-model="formObj.name" placeholder="请输入用户名"></el-input>
+          <el-input class="ipt" v-model="formObj.name" placeholder="请输入用户名" :clearable="true"></el-input>
         </el-form-item>
         <el-form-item label="密码:" prop="password">
-          <el-input class="ipt" v-model="formObj.password" placeholder="请输入密码"></el-input>
+          <el-input class="ipt" v-model="formObj.password" type="password" :show-password="true" placeholder="请输入密码"></el-input>
         </el-form-item>
         <el-form-item label="" >
           <el-button @click="doLogin(formObj.name,formObj.password)" class="loginBtn" type="primary" round>登 录</el-button>

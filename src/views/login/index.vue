@@ -40,7 +40,6 @@ const formObj = reactive(
 , {ctx}:any = getCurrentInstance()
 
 
-console.log(store.getters['app/name'],store.state.app.user);
 /* 
   页面用到的方法
 */

@@ -16,6 +16,9 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
   ],
+  // define: {
+  //   'process.env': {}
+  // },
   base:'/tank/',
   server:{
     host:'0.0.0.0',

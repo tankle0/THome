@@ -11,7 +11,7 @@ const state = {
 
 }
 , getters = {
-  name:(state:any)=>{
+  name:()=>{
     return getUserInfo()?.name
   }
 }

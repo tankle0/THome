@@ -2,9 +2,16 @@
 import { removeUserInfo } from '@/utils/user'
 import { useRouter } from 'vue-router'
 import { ElMessageBox, ElMessage } from 'element-plus'
-export default{
-  name:"heads"
-}
+import { computed, defineComponent } from 'vue'
+import { mapGetters } from 'vuex'
+export default defineComponent({
+  name:"heads",
+  computed:{
+    ...mapGetters({
+      name:'app/name'
+    })
+  }
+})
 </script>
 
 <script lang="ts" setup>
@@ -39,7 +46,7 @@ const router = useRouter()
     <div class="user">
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
-          <span>{{'tank'}}</span>
+          <span>{{ name }}</span>
           <el-icon color="#666"><avatar /></el-icon>
           <el-icon color="#666" class="el-icon--right">
             <arrow-down />

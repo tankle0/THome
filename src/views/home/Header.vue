@@ -2,7 +2,7 @@
 import { removeUserInfo } from '@/utils/user'
 import { useRouter } from 'vue-router'
 import { ElMessageBox, ElMessage } from 'element-plus'
-import { computed, defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 import { mapGetters } from 'vuex'
 export default defineComponent({
   name:"heads",

@@ -1,23 +1,26 @@
-# vue3 + vite + ts
+# Vue3 + Vite + TypeScript
 
 
 ## 安装依赖
 
 ```javascript
-yarn  | npm i
+ npm i
 ```
 
 
 ## 运行项目
 
 ```javascript
-yarn dev | npm run dev 
+ npm run dev 
 ```
 
 
 ## 构建项目
 
 ```javascript
-yarn build | npm run build
+ npm run build
 ```
 
+### 注意
+
+ 由于ElementUIPlus使用了按需引入,所以初次加载时较慢且有引入报错的情况,等待或重新运行即可

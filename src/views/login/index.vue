@@ -75,7 +75,7 @@ function doLogin(name:string,password:string):void{
           <el-input class="ipt" v-model="formObj.name" placeholder="请输入用户名" :clearable="true"></el-input>
         </el-form-item>
         <el-form-item label="密码:" prop="password">
-          <el-input class="ipt" v-model="formObj.password" type="password" :show-password="true" placeholder="请输入密码"></el-input>
+          <el-input class="ipt" @keyup.enter="doLogin(formObj.name,formObj.password)" v-model="formObj.password" type="password" :show-password="true" placeholder="请输入密码"></el-input>
         </el-form-item>
         <el-form-item label="" >
           <el-button @click="doLogin(formObj.name,formObj.password)" class="loginBtn" type="primary" round>登 录</el-button>

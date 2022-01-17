@@ -3,7 +3,7 @@ import { computed, reactive, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import MenuNav from './MenuNav.vue'
 export default{
-  name:'slidebar'
+  name:'Slidebar'
 }
 </script>
 

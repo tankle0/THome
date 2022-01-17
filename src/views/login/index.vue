@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { useStore } from 'vuex'
 export default{
-  name:'login'
+  name:'Login'
 }
 </script>
 

@@ -21,24 +21,22 @@ instance.interceptors.response.use(response=>{
   if (error && error.response) {
     switch (error.response.status) {
       case 400:
-        msg = "客户端请求的语法错误，服务器无法理解";
+        msg = "抱歉!服务器400";
         break;
       case 401:
-        msg = "身份验证出错";
-        // router.push({ name: "login" });
+        msg = "抱歉!服务器401";
         break;
       case 403:
-        msg = "您暂无此功能权限";
-        // ElMessage.error(msg);
+        msg = "抱歉!服务器403";
         break;
       case 404:
         msg = `请求地址出错:${error.response.config.url}`;
         break;
       case 405:
-        msg = "请求方式被禁止";
+        msg = "抱歉!服务器405";
         break;
       case 408:
-        msg = "请求超时";
+        msg = "抱歉!服务器408";
         break;
       case 500:
         msg = "服务器内部错误，无法完成请求";
@@ -48,17 +46,17 @@ instance.interceptors.response.use(response=>{
         break;
       case 502:
         msg =
-          "作为网关或者代理工作的服务器尝试执行请求时，从远程服务器接收到了一个无效的响应";
+          "抱歉!服务器502";
         break;
       case 503:
         msg =
-          "由于超载或系统维护，服务器暂时的无法处理客户端的请求。延时的长度可包含在服务器的Retry-After头信息中";
+          "抱歉!服务器503";
         break;
       case 504:
-        msg = "充当网关或代理的服务器，未及时从远端服务器获取请求";
+        msg = "抱歉!服务器504";
         break;
       case 505:
-        msg = "服务器不支持请求的HTTP协议的版本";
+        msg = "抱歉!服务器505";
         break;
       default:
         msg = `请求出错:${error.message}`;

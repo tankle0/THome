@@ -3,6 +3,7 @@ import { reactive, ref, getCurrentInstance } from 'vue'
 import { setUserInfo } from '@/utils/user'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
+import type { ElForm } from 'element-plus'
 import { useStore } from 'vuex'
 export default{
   name:'Login'
@@ -10,6 +11,7 @@ export default{
 </script>
 
 <script lang="ts" setup>
+type FormInstance = InstanceType<typeof ElForm>
 const formObj = reactive(
   {
     name:'',
@@ -37,21 +39,23 @@ const formObj = reactive(
   }
 )
 
-, {ctx}:any = getCurrentInstance()
+// , {ctx}:any = getCurrentInstance()
+, form = ref<FormInstance>()
 
 
 /* 
   页面用到的方法
 */
 
-function doLogin(name:string,password:string):void{
-  ctx.$refs.form.validate((valid:Boolean) => {
+function doLogin(formEl: FormInstance | undefined){
+  if (!formEl) return
+  formEl.validate((valid) => {
     if (valid) {
       let params = {
-        name,
-        password
+        name:formObj.name,
+        password:formObj.password
       },token = Math.random() + ''
-      setUserInfo({name,token})
+      setUserInfo({name:formObj.name,token})
       ElMessage({
         message:'登录成功',
         type:'success'
@@ -75,10 +79,10 @@ function doLogin(name:string,password:string):void{
           <el-input class="ipt" v-model="formObj.name" placeholder="请输入用户名" :clearable="true"></el-input>
         </el-form-item>
         <el-form-item label="密码:" prop="password">
-          <el-input class="ipt" @keyup.enter="doLogin(formObj.name,formObj.password)" v-model="formObj.password" type="password" :show-password="true" placeholder="请输入密码"></el-input>
+          <el-input class="ipt" @keyup.enter="doLogin(form)" v-model="formObj.password" type="password" :show-password="true" placeholder="请输入密码"></el-input>
         </el-form-item>
         <el-form-item label="" >
-          <el-button @click="doLogin(formObj.name,formObj.password)" class="loginBtn" type="primary" round>登 录</el-button>
+          <el-button @click="doLogin(form)" class="loginBtn" type="primary" round>登 录</el-button>
         </el-form-item>
       </el-form>
     </div>

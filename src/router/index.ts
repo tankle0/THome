@@ -42,7 +42,7 @@ const routes:Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-  history:createWebHistory(import.meta.env.BASE_URL),
+  history:createWebHistory(import.meta.env.BASE_URL), //BASE_URL  与vite配置中的base路径一致
   routes
 })
 

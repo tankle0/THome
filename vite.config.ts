@@ -29,7 +29,7 @@ export default defineConfig({
   // define: {
   //   'process.env': {}
   // },
-  base:'/tank/',
+  base:'/THome/',
   server:{
     host:'0.0.0.0',
     open:true,

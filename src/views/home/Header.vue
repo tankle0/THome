@@ -5,7 +5,7 @@ import { ElMessageBox, ElMessage } from 'element-plus'
 import { defineComponent } from 'vue'
 import { mapGetters } from 'vuex'
 export default defineComponent({
-  name:"heads",
+  name:"Header",
   computed:{
     ...mapGetters({
       name:'app/name'

@@ -1,6 +1,6 @@
 <script lang="ts">
 export default{
-  name:'dashboard'
+  name:'Dashboard'
 }
 </script>
 

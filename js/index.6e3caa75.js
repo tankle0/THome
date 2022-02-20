@@ -1,0 +1,1 @@
+import{_ as o}from"./index.e87c5225.js";import{o as s,f as a,P as t,Q as _,g as c}from"./vendor.bc945d7f.js";const d={name:"books"},n=e=>(t("data-v-ba6e8d8a"),e=e(),_(),e),p={class:"books"},r=n(()=>c("h1",null,"tank-\u5B66\u4E60\u8D44\u6599",-1)),i=[r];function u(e,l,f,h,m,v){return s(),a("div",p,i)}var b=o(d,[["render",u],["__scopeId","data-v-ba6e8d8a"]]);export{b as default};

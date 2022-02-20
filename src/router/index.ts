@@ -1,4 +1,4 @@
-import { createRouter, RouteRecordRaw, createWebHistory } from "vue-router"
+import { createRouter, RouteRecordRaw, createWebHashHistory } from "vue-router"
 import Home from '@/views/home/index.vue'
 
 const asyncRoutes:Array<RouteRecordRaw> = [
@@ -42,7 +42,7 @@ const routes:Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-  history:createWebHistory(import.meta.env.BASE_URL), //BASE_URL  与vite配置中的base路径一致
+  history:createWebHashHistory(import.meta.env.BASE_URL), //BASE_URL  与vite配置中的base路径一致
   routes
 })
 

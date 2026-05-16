@@ -1,0 +1,1 @@
+import{_ as o,o as s,c as t,a}from"./index.e3c803b9.js";const r={name:"books"},n={class:"books"};function _(c,e,u,d,l,p){return s(),t("div",n,[...e[0]||(e[0]=[a("h1",null,"tank-\u5B66\u4E60\u8D44\u6599",-1),a("iframe",{src:"https://wlhy.muyuan56.com",frameborder:"0"},null,-1)])])}var m=o(r,[["render",_],["__scopeId","data-v-769b92a4"]]);export{m as default};

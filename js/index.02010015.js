@@ -1,1 +1,0 @@
-import{_ as a,o as s,c as t,a as o}from"./index.e3c803b9.js";const _={name:"Dashboard"},n={class:"dashboard"};function r(d,e,c,p,u,i){return s(),t("div",n,[...e[0]||(e[0]=[o("h1",null,"tank-\u9996\u9875",-1)])])}var f=a(_,[["render",r],["__scopeId","data-v-4f2d5abf"]]);export{f as default};

@@ -22,7 +22,7 @@ export default{
   background-color: #fff;
   iframe{
     width: 100%;
-    min-height: 70vh;
+    min-height: 80vh;
   }
 }
 </style>
